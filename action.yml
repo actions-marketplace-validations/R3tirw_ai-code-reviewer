@@ -1,0 +1,38 @@
+name: 'AI Code Reviewer'
+description: 'Automated pull request code review powered by Claude AI'
+author: 'R3tirw'
+
+branding:
+  icon: 'code'
+  color: 'purple'
+
+inputs:
+  anthropic_api_key:
+    description: 'Anthropic API key for Claude'
+    required: true
+  github_token:
+    description: 'GitHub token for posting comments'
+    required: true
+    default: ${{ github.token }}
+  model:
+    description: 'Claude model to use'
+    required: false
+    default: 'claude-sonnet-4-20250514'
+  max_tokens:
+    description: 'Maximum tokens for review response'
+    required: false
+    default: '4096'
+  review_level:
+    description: 'Review depth: basic, standard, thorough'
+    required: false
+    default: 'standard'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    ANTHROPIC_API_KEY: ${{ inputs.anthropic_api_key }}
+    GITHUB_TOKEN: ${{ inputs.github_token }}
+    MODEL: ${{ inputs.model }}
+    MAX_TOKENS: ${{ inputs.max_tokens }}
+    REVIEW_LEVEL: ${{ inputs.review_level }}
