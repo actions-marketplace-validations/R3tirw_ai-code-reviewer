@@ -1,0 +1,14 @@
+{
+  "name": "ai-code-reviewer",
+  "version": "1.0.0",
+  "description": "AI-powered code reviewer for pull requests using Claude",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.0",
+    "@octokit/rest": "^20.0.2"
+  },
+  "license": "MIT"
+}
